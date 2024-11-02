@@ -3,15 +3,15 @@ import SwiftAI
 @main
 struct ExampleApp {
     static func main() async {
-        let prompt = "What is the meaning of life, the universe, and everything?"
+        let prompt = "What is the meaning of life? Keep your answer super concise and to the point :)"
         
         do {
-            let response = try await XAI.Completions.post(
-                XAI.Completions.Request(prompt: prompt),
+            let response = try await XAI.ChatCompletions.post(
+                XAI.ChatCompletions.Request([.init(prompt)]),
                 authenticationKey: .xAI
             )
             
-            print(response.choices.first?.text ?? "")
+            print(response.choices.first?.message?.content ?? "")
         } catch {
             print(error)
         }

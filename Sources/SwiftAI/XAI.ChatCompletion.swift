@@ -1,13 +1,24 @@
 import FoundationToolz
+import SwiftyToolz
 
 extension XAI {
-    public enum ChatCompletion {
-        
+    public enum ChatCompletions {
+        public static func post(
+            _ request: Request,
+            authenticationKey: AuthenticationKey
+        ) async throws(HTTP.RequestError) -> Response {
+            try await HTTP.sendRequest(
+                to: baseURL + "v1/chat/completions",
+                using: .POST,
+                content: request,
+                authorizationValue: "Bearer " + authenticationKey.value
+            )
+        }
         
         /// Create a language model response for a given chat conversation. This endpoint is compatible with the OpenAI API.
         public struct Request: Encodable {
             public init(
-                messages: [Message],
+                _ messages: [Message],
                 model: String = "grok-beta",
                 frequency_penalty: Double? = nil,
                 logit_bias: [String : Int]? = nil,
@@ -98,6 +109,11 @@ extension XAI {
             public let user: String?
             
             public struct Message: Encodable {
+                public init(_ content: String, role: String = "user") {
+                    self.content = content
+                    self.role = role
+                }
+                
                 public let role: String
                 public let content: String
             }

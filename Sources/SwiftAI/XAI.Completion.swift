@@ -18,7 +18,7 @@ extension XAI {
         /// Create a language model response for a given prompt. This endpoint is compatible with the OpenAI API.
         public struct Request: Encodable {
             public init(
-                prompt: String,
+                _ prompt: String,
                 model: String = "grok-beta",
                 best_of: Int? = nil,
                 echo: Bool? = nil,
