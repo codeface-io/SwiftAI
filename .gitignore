@@ -2,3 +2,4 @@ Package.resolved
 .swiftpm/
 XAIAuthenticationKey.swift
 AnthropicAuthenticationKey.swift
+OpenAIAuthenticationKey.swift
