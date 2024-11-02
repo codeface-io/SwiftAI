@@ -34,7 +34,7 @@ extension Anthropic {
             
             public init(
                 _ messages: [Message],
-                model: String = "claude-3-5-sonnet-20241022",
+                model: String = "claude-3-5-sonnet-latest",
                 max_tokens: Int = 1024,
                 metadata: [String: String]? = nil,
                 stop_sequences: [String]? = nil,
