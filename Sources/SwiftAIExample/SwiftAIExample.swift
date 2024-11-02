@@ -32,4 +32,13 @@ func demonstrate() async throws(HTTP.RequestError) {
     let claudeAnswer = claudeResponse.content.first?.text ?? ""
     
     print(claudeAnswer)
+    
+    let chatGPTResponse = try await OpenAI.ChatCompletions.post(
+        OpenAI.ChatCompletions.Request([.init(prompt)]),
+        authenticationKey: .openAI
+    )
+    
+    let chatGPTAnswer = chatGPTResponse.choices.first?.message.content ?? ""
+    
+    print(chatGPTAnswer)
 }
