@@ -1,8 +1,8 @@
 # SwiftAI
 
-AI agents in Swift.
+🚀 Future: AI agents in Swift.
 
-First goal: Easy access to the major LLM APIs (Grok, Claude, ChatGPT):
+🏁 Now: Easy use of Grok, Claude and ChatGPT:
 
 ```swift
 import SwiftAI
@@ -10,6 +10,7 @@ import SwiftAI
 func demonstrate() async throws {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     
+    // Grok
     let grokResponse = try await XAI.ChatCompletions.post(
         XAI.ChatCompletions.Request([.init(prompt)]),
         authenticationKey: .xAI
@@ -19,6 +20,7 @@ func demonstrate() async throws {
     
     print(grokAnswer)
     
+    // Claude
     let claudeResponse = try await Anthropic.Messages.post(
         Anthropic.Messages.Request([.init(prompt)]),
         authenticationKey: .anthropic
@@ -27,5 +29,15 @@ func demonstrate() async throws {
     let claudeAnswer = claudeResponse.content.first?.text ?? ""
     
     print(claudeAnswer)
+    
+    // ChatGPT
+    let chatGPTResponse = try await OpenAI.ChatCompletions.post(
+        OpenAI.ChatCompletions.Request([.init(prompt)]),
+        authenticationKey: .openAI
+    )
+    
+    let chatGPTAnswer = chatGPTResponse.choices.first?.message.content ?? ""
+    
+    print(chatGPTAnswer)
 }
 ```

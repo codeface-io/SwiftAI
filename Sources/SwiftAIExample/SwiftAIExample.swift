@@ -15,6 +15,7 @@ struct ExampleApp {
 func demonstrate() async throws(HTTP.RequestError) {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     
+    // Grok
     let grokResponse = try await XAI.ChatCompletions.post(
         XAI.ChatCompletions.Request([.init(prompt)]),
         authenticationKey: .xAI
@@ -24,6 +25,7 @@ func demonstrate() async throws(HTTP.RequestError) {
     
     print(grokAnswer)
     
+    // Claude
     let claudeResponse = try await Anthropic.Messages.post(
         Anthropic.Messages.Request([.init(prompt)]),
         authenticationKey: .anthropic
@@ -33,6 +35,7 @@ func demonstrate() async throws(HTTP.RequestError) {
     
     print(claudeAnswer)
     
+    // ChatGPT
     let chatGPTResponse = try await OpenAI.ChatCompletions.post(
         OpenAI.ChatCompletions.Request([.init(prompt)]),
         authenticationKey: .openAI
