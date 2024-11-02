@@ -1,8 +1,8 @@
 # SwiftAI
 
-🚀 Future: AI agents in Swift.
+🛸 Future: AI agents as declarative Swift.
 
-🏁 Now: Easy use of Grok, Claude and ChatGPT:
+✨ Now: Easy use of Grok, Claude and ChatGPT:
 
 ```swift
 import SwiftAI
