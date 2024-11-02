@@ -2,7 +2,7 @@
 
 AI agents in Swift.
 
-First goal: Easy access to all major LLM APIs:
+First goal: Easy access to the major LLM APIs (Grok, Claude, ChatGPT):
 
 ```swift
 import SwiftAI
@@ -10,15 +10,15 @@ import SwiftAI
 @main
 struct ExampleApp {
     static func main() async {
-        let prompt = "What is the meaning of life, the universe, and everything?"
+        let prompt = "What is the meaning of life? Keep your answer super concise and to the point :)"
         
         do {
-            let answer = try await XAI.Completion.complete(
-                prompt: prompt,
+            let response = try await XAI.ChatCompletions.post(
+                XAI.ChatCompletions.Request([.init(prompt)]),
                 authenticationKey: .xAI
             )
             
-            print(answer)
+            print(response.choices.first?.message?.content ?? "")
         } catch {
             print(error)
         }
