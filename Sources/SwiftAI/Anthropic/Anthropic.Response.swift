@@ -1,5 +1,5 @@
 extension Anthropic {
-    @frozen public struct Response: Codable, Sendable {
+    public struct Response: Codable, Sendable {
         public init(
             id: String,
             type: String,
@@ -29,7 +29,7 @@ extension Anthropic {
         public var stop_reason: String?
         public var stop_sequence: String?
         
-        @frozen public struct ContentBlock: Codable, Sendable {
+        public struct ContentBlock: Codable, Sendable {
             public var type: String
             public var text: String?
             
@@ -42,7 +42,7 @@ extension Anthropic {
             }
         }
 
-        @frozen public struct Usage: Codable, Sendable {
+        public struct Usage: Codable, Sendable {
             public var input_tokens: Int
             public var output_tokens: Int
             
