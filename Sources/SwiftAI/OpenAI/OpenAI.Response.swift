@@ -4,9 +4,8 @@ extension OpenAI {
         public let object: String
         public let created: Int
         public let model: String
+        
         public let usage: Usage
-        public let choices: [Choice]
-        public let system_fingerprint: String?
         
         public struct Usage: Codable, Sendable {
             public let prompt_tokens: Int
@@ -14,11 +13,15 @@ extension OpenAI {
             public let total_tokens: Int
         }
         
+        public let choices: [Choice]
+        
         public struct Choice: Codable, Sendable {
             public let index: Int
             public let message: Message
             public let finish_reason: String
             public let logprobs: [String: Double]?
         }
+        
+        public let system_fingerprint: String?
     }
 }
