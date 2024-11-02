@@ -6,12 +6,12 @@ struct ExampleApp {
         let prompt = "What is the meaning of life, the universe, and everything?"
         
         do {
-            let answer = try await XAI.Completion.complete(
-                prompt: prompt,
+            let response = try await XAI.Completions.post(
+                XAI.Completions.Request(prompt: prompt),
                 authenticationKey: .xAI
             )
             
-            print(answer)
+            print(response.choices.first?.text ?? "")
         } catch {
             print(error)
         }

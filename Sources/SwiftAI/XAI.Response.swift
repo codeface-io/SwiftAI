@@ -1,30 +1,30 @@
 extension XAI {
-    struct Response: Decodable {
-        let id: String
-        let object: String
-        let created: Int
-        let model: String
-        let choices: [Choice]
-        let usage: Usage
-        let system_fingerprint: String
+    public struct Response: Decodable, Sendable {
+        public let id: String
+        public let object: String
+        public let created: Int
+        public let model: String
+        public let choices: [Choice]
+        public let usage: Usage
+        public let system_fingerprint: String
         
-        struct Choice: Decodable {
-            let index: Int
-            let message: Message? // for chat comnpletion
-            let text: String? // for simple completion
-            let finish_reason: String
+        public struct Choice: Decodable, Sendable {
+            public let index: Int
+            public let message: Message? // for chat comnpletion
+            public let text: String? // for simple completion
+            public let finish_reason: String
             
-            struct Message: Decodable {
-                let role: String
-                let content: String
-                let refusal: String?
+            public struct Message: Decodable, Sendable {
+                public let role: String
+                public let content: String
+                public let refusal: String?
             }
         }
         
-        struct Usage: Decodable {
-            let prompt_tokens: Int
-            let completion_tokens: Int
-            let total_tokens: Int
+        public struct Usage: Decodable, Sendable {
+            public let prompt_tokens: Int
+            public let completion_tokens: Int
+            public let total_tokens: Int
         }
     }
 }
