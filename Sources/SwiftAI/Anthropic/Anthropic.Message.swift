@@ -1,11 +1,13 @@
 extension Anthropic {
     public struct Message: Codable, Sendable {
-        public init(_ content: String, role: String = "user") {
+        public init(_ content: String, role: Role = .user) {
             self.content = content
             self.role = role
         }
         
         let content: String
-        let role: String
+        let role: Role
+        
+        public enum Role: String, Codable, Sendable { case user, assistant }
     }
 }
