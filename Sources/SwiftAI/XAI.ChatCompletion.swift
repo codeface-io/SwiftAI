@@ -107,16 +107,6 @@ extension XAI {
             
             /// Unique identifier representing the end-user.
             public let user: String?
-            
-            public struct Message: Encodable {
-                public init(_ content: String, role: String = "user") {
-                    self.content = content
-                    self.role = role
-                }
-                
-                public let role: String
-                public let content: String
-            }
         }
     }
 }

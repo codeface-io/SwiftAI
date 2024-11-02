@@ -10,15 +10,9 @@ extension XAI {
         
         public struct Choice: Decodable, Sendable {
             public let index: Int
-            public let message: Message? // for chat comnpletion
+            public let message: Message? // for chat completion
             public let text: String? // for simple completion
             public let finish_reason: String
-            
-            public struct Message: Decodable, Sendable {
-                public let role: String
-                public let content: String
-                public let refusal: String?
-            }
         }
         
         public struct Usage: Decodable, Sendable {
