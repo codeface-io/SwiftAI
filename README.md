@@ -7,21 +7,25 @@ First goal: Easy access to the major LLM APIs (Grok, Claude, ChatGPT):
 ```swift
 import SwiftAI
 
-@main
-struct ExampleApp {
-    static func main() async {
-        let prompt = "What is the meaning of life? Keep your answer super concise and to the point :)"
-        
-        do {
-            let response = try await XAI.ChatCompletions.post(
-                XAI.ChatCompletions.Request([.init(prompt)]),
-                authenticationKey: .xAI
-            )
-            
-            print(response.choices.first?.message?.content ?? "")
-        } catch {
-            print(error)
-        }
-    }
+func demonstrate() async throws {
+    let prompt = "What is the meaning of life? Be concise and to the point :)"
+    
+    let grokResponse = try await XAI.ChatCompletions.post(
+        XAI.ChatCompletions.Request([.init(prompt)]),
+        authenticationKey: .xAI
+    )
+    
+    let grokAnswer = grokResponse.choices.first?.message?.content ?? ""
+    
+    print(grokAnswer)
+    
+    let claudeResponse = try await Anthropic.Messages.post(
+        Anthropic.Messages.Request([.init(prompt)]),
+        authenticationKey: .anthropic
+    )
+    
+    let claudeAnswer = claudeResponse.content.first?.text ?? ""
+    
+    print(claudeAnswer)
 }
 ```
