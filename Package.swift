@@ -19,8 +19,10 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/flowtoolz/FoundationToolz.git", exact: "0.5.2"),
-//        .package(path: "../FoundationToolz")
+        .package(url: "https://github.com/flowtoolz/FoundationToolz.git", exact: "0.5.3"),
+//        .package(path: "../FoundationToolz"),
+        .package(url: "https://github.com/flowtoolz/SwiftyToolz.git", exact: "0.5.2"),
+//        .package(path: "../SwiftyToolz"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -28,14 +30,16 @@ let package = Package(
         .target(
             name: "SwiftAI",
             dependencies: [
-                .product(name: "FoundationToolz", package: "FoundationToolz")
+                "FoundationToolz",
+                "SwiftyToolz"
             ]
         ),
         .executableTarget(
             name: "SwiftAIExample",
             dependencies: [
                 "SwiftAI",
-                .product(name: "FoundationToolz", package: "FoundationToolz")
+                "FoundationToolz",
+                "SwiftyToolz"
             ]
         ),
         .testTarget(
