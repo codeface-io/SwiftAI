@@ -1,5 +1,4 @@
 import SwiftAI
-import FoundationToolz
 
 @main
 struct ExampleApp {
