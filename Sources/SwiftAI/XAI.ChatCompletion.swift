@@ -5,7 +5,7 @@ extension XAI {
         /// Create a language model response for a given chat conversation. This endpoint is compatible with the OpenAI API.
         struct Request: Encodable {
             init(messages: [Message],
-                 model: String,
+                 model: String = "grok-beta",
                  frequency_penalty: Double? = nil,
                  logit_bias: [String : Int]? = nil,
                  logprobs: Bool? = nil,

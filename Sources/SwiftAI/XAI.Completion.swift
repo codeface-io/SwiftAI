@@ -2,12 +2,14 @@ import FoundationToolz
 
 extension XAI {
     public enum Completion {
-        public static func complete(prompt: String,
-                                    authenticationKey: AuthenticationKey) async throws(HTTP.RequestError) -> String {
+        public static func complete(
+            prompt: String,
+            authenticationKey: AuthenticationKey
+        ) async throws(HTTP.RequestError) -> String {
             let response: Response = try await HTTP.sendRequest(
                 to: baseURL + "v1/completions",
                 using: .POST,
-                content: Request(model: "grok-beta", prompt: prompt),
+                content: Request(prompt: prompt),
                 authorizationValue: "Bearer " + authenticationKey.value
             )
             
@@ -16,8 +18,8 @@ extension XAI {
         
         /// Create a language model response for a given prompt. This endpoint is compatible with the OpenAI API.
         struct Request: Encodable {
-            init(model: String,
-                 prompt: String,
+            init(prompt: String,
+                 model: String = "grok-beta",
                  best_of: Int? = nil,
                  echo: Bool? = nil,
                  frequency_penalty: Double? = nil,
