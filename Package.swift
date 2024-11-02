@@ -19,7 +19,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/flowtoolz/FoundationToolz.git", exact: "0.5.1"),
+        .package(url: "https://github.com/flowtoolz/FoundationToolz.git", exact: "0.5.2"),
 //        .package(path: "../FoundationToolz")
     ],
     targets: [
