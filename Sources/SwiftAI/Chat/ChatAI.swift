@@ -1,4 +1,4 @@
-public struct ChatAccess: Sendable {
+public struct ChatAI: Sendable {
     public init(chatCompletionType: ChatCompletionInterface.Type,
                 key: AuthenticationKey) {
         self.chatCompletionType = chatCompletionType

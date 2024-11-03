@@ -1,22 +1,24 @@
-public extension ChatAccess {
-    static func grokBeta(key: AuthenticationKey) -> ChatAccess {
-        .init(chatCompletionType: GrokBeta.self, key: key)
+public extension ChatAI {
+    static func grokBeta(key: AuthenticationKey) -> ChatAI {
+        .init(chatCompletionType: XAI.GrokBeta.self, key: key)
     }
 }
 
-public enum GrokBeta: ChatCompletionInterface {
-    public static func complete(chat: [Message],
-                                key: AuthenticationKey) async throws -> Message {
-        try await XAI.ChatCompletions.complete(chat: chat,
+public extension XAI {
+    enum GrokBeta: ChatCompletionInterface {
+        public static func complete(chat: [SwiftAI.Message],
+                                    key: AuthenticationKey) async throws -> SwiftAI.Message {
+            try await ChatCompletions.complete(chat: chat,
                                                usingModel: "grok-beta",
                                                key: key)
+        }
     }
 }
 
 public extension XAI.ChatCompletions {
-    static func complete(chat: [Message],
+    static func complete(chat: [SwiftAI.Message],
                          usingModel model: String,
-                         key: AuthenticationKey) async throws -> Message {
+                         key: AuthenticationKey) async throws -> SwiftAI.Message {
         // prepare xAI messages to be sent
         let xAIMessages = chat.map { XAI.Message($0) }
         
