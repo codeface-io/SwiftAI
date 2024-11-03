@@ -26,12 +26,7 @@ func demonstrate() async throws {
     print(claudeAnswer.content)
     
     // ChatGPT
-    let chatGPTResponse = try await OpenAI.ChatCompletions.post(
-        OpenAI.ChatCompletions.Request([.init(prompt)]),
-        key: .openAI
-    )
-    
-    let chatGPTAnswer = chatGPTResponse.choices.first?.message.content ?? ""
-    
-    print(chatGPTAnswer)
+    let chatGPT = ChatAI.gpt_4o(key: .openAI)
+    let chatGPTAnswer = try await chatGPT.complete(chat: [Message(prompt)])
+    print(chatGPTAnswer.content)
 }
