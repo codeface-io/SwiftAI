@@ -16,7 +16,7 @@ func demonstrate() async throws {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     
     // Grok
-    let grok = ChatBot.grokBeta(key: .xAI)
+    let grok = ChatAccess.grokBeta(key: .xAI)
     let grokAnswer = try await grok.complete(chat: [Message(prompt)])
     print(grokAnswer.content)
     
