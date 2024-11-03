@@ -1,5 +1,6 @@
 Package.resolved
 .swiftpm/
+.build/
 XAIAuthenticationKey.swift
 AnthropicAuthenticationKey.swift
 OpenAIAuthenticationKey.swift

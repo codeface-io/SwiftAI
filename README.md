@@ -11,14 +11,10 @@ func demonstrate() async throws {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     
     // Grok
-    let grokResponse = try await XAI.ChatCompletions.post(
-        XAI.ChatCompletions.Request([.init(prompt)]),
-        authenticationKey: .xAI
-    )
+    let grokAnswer = try await Grok.Beta.complete(chat: [Message(prompt)],
+                                                  authenticationKey: .xAI)
     
-    let grokAnswer = grokResponse.choices.first?.message?.content ?? ""
-    
-    print(grokAnswer)
+    print(grokAnswer.content)
     
     // Claude
     let claudeResponse = try await Anthropic.Messages.post(

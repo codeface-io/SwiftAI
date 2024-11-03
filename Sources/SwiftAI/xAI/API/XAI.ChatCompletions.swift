@@ -16,7 +16,7 @@ extension XAI {
         }
         
         /// Create a language model response for a given chat conversation. This endpoint is compatible with the OpenAI API.
-        public struct Request: Encodable {
+        public struct Request: Encodable, Sendable {
             public init(
                 _ messages: [Message],
                 model: String = "grok-beta",
