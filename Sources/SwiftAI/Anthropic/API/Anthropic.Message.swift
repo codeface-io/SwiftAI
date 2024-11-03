@@ -7,7 +7,5 @@ extension Anthropic {
         
         let content: String
         let role: Role
-        
-        public enum Role: String, Codable, Sendable { case user, assistant }
     }
 }

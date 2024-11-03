@@ -28,7 +28,7 @@ public extension XAI.ChatCompletions {
         
         // get xAI response message
         guard let xAIResponseMessage = response.choices.first?.message else {
-            throw ChatCompletionError.responseContainsNoChoice
+            throw ChatCompletionError.responseLacksData
         }
         
         // turn xAI response message into regular message

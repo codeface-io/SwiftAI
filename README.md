@@ -16,14 +16,9 @@ func demonstrate() async throws {
     print(grokAnswer.content)
     
     // Claude
-    let claudeResponse = try await Anthropic.Messages.post(
-        Anthropic.Messages.Request([.init(prompt)]),
-        key: .anthropic
-    )
-    
-    let claudeAnswer = claudeResponse.content.first?.text ?? ""
-    
-    print(claudeAnswer)
+    let claude = ChatAI.claude_3_5_Sonnet(key: .anthropic)
+    let claudeAnswer = try await claude.complete(chat: [Message(prompt)])
+    print(claudeAnswer.content)
     
     // ChatGPT
     let chatGPTResponse = try await OpenAI.ChatCompletions.post(

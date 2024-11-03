@@ -13,5 +13,5 @@ public protocol ChatCompletionInterface { // only static properties and function
 }
 
 enum ChatCompletionError: Error {
-    case responseContainsNoChoice
+    case responseLacksData
 }
