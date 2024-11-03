@@ -9,7 +9,7 @@
  */
 public protocol ChatCompletionInterface { // only static properties and functions! no instantiation required
     static func complete(chat: [Message],
-                         authenticationKey: AuthenticationKey) async throws -> Message
+                         key: AuthenticationKey) async throws -> Message
 }
 
 enum ChatCompletionError: Error {

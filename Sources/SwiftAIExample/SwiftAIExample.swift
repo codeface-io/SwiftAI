@@ -16,15 +16,14 @@ func demonstrate() async throws {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     
     // Grok
-    let grokAnswer = try await Grok.Beta.complete(chat: [Message(prompt)],
-                                                  authenticationKey: .xAI)
-    
+    let grok = ChatBot.grokBeta(key: .xAI)
+    let grokAnswer = try await grok.complete(chat: [Message(prompt)])
     print(grokAnswer.content)
     
     // Claude
     let claudeResponse = try await Anthropic.Messages.post(
         Anthropic.Messages.Request([.init(prompt)]),
-        authenticationKey: .anthropic
+        key: .anthropic
     )
     
     let claudeAnswer = claudeResponse.content.first?.text ?? ""
@@ -34,7 +33,7 @@ func demonstrate() async throws {
     // ChatGPT
     let chatGPTResponse = try await OpenAI.ChatCompletions.post(
         OpenAI.ChatCompletions.Request([.init(prompt)]),
-        authenticationKey: .openAI
+        key: .openAI
     )
     
     let chatGPTAnswer = chatGPTResponse.choices.first?.message.content ?? ""

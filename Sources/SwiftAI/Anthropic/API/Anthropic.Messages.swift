@@ -5,14 +5,14 @@ extension Anthropic {
     public enum Messages {
         public static func post(
             _ request: Request,
-            authenticationKey: AuthenticationKey
+            key: AuthenticationKey
         ) async throws(HTTP.RequestError) -> Response {
             try await HTTP.sendRequest(
                 to: baseURL + "v1/messages",
                 using: .POST,
                 content: request,
                 addingHeaders: [
-                    "x-api-key": authenticationKey.value,
+                    "x-api-key": key.value,
                     "anthropic-version": "2023-06-01"
                 ]
             )

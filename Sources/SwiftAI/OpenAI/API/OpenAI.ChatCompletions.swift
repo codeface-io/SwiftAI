@@ -5,13 +5,13 @@ extension OpenAI {
     public enum ChatCompletions {
         public static func post(
             _ request: Request,
-            authenticationKey: AuthenticationKey
+            key: AuthenticationKey
         ) async throws(HTTP.RequestError) -> Response {
             try await HTTP.sendRequest(
                 to: baseURL + "v1/chat/completions",
                 using: .POST,
                 content: request,
-                authorizationValue: "Bearer " + authenticationKey.value
+                authorizationValue: "Bearer " + key.value
             )
         }
         
