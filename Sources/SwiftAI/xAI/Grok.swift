@@ -1,5 +1,5 @@
-public extension ChatBot {
-    static func grokBeta(key: AuthenticationKey) -> ChatBot {
+public extension ChatAccess {
+    static func grokBeta(key: AuthenticationKey) -> ChatAccess {
         .init(chatCompletionType: GrokBeta.self, key: key)
     }
 }
