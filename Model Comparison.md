@@ -24,3 +24,17 @@ The meaning of life is subjective and unique to each person, but common themes i
 There's no universal answer - you get to decide what makes your life meaningful.
 
 The meaning of life is a philosophical question regarding the purpose and significance of existence. Answers vary widely, including perspectives from religion, science, and personal fulfillment. It's often seen as subjective, with meaning determined by one's own experiences and beliefs.
+
+# Who are you?
+
+## Grok
+
+I am Grok, AI built by xAI.🤖
+
+## Claude
+
+I'm Claude, an AI assistant created by Anthropic to be helpful, harmless, and honest 🤖
+
+## ChatGPT
+
+I'm an AI language model here to assist and provide information. 🤖
