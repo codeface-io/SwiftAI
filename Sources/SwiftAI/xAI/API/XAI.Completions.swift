@@ -19,7 +19,7 @@ extension XAI {
         public struct Request: Encodable {
             public init(
                 _ prompt: String,
-                model: String = "grok-beta",
+                model: Model,
                 best_of: Int? = nil,
                 echo: Bool? = nil,
                 frequency_penalty: Double? = nil,
@@ -36,7 +36,7 @@ extension XAI {
                 top_p: Double? = nil,
                 user: String? = nil
             ) {
-                self.model = model
+                self.model = model.value
                 self.prompt = prompt
                 self.best_of = best_of
                 self.echo = echo

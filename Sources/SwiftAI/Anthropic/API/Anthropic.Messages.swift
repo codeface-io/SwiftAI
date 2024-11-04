@@ -19,22 +19,9 @@ extension Anthropic {
         }
         
         public struct Request: Codable, Sendable {
-            public var messages: [Message]
-            public var model: String
-            public var max_tokens: Int
-            public var metadata: [String: String]?
-            public var stop_sequences: [String]?
-            public var stream: Bool?
-            public var system: String?
-            public var temperature: Double?
-            public var tool_choice: ToolChoice?
-            public var tools: [Tool]?
-            public var top_k: Int?
-            public var top_p: Double?
-            
             public init(
                 _ messages: [Message],
-                model: String = "claude-3-5-sonnet-latest",
+                model: Model = .claude_3_5_Sonnet,
                 max_tokens: Int = 1024,
                 metadata: [String: String]? = nil,
                 stop_sequences: [String]? = nil,
@@ -47,7 +34,7 @@ extension Anthropic {
                 top_p: Double? = nil
             ) {
                 self.messages = messages
-                self.model = model
+                self.model = model.value
                 self.max_tokens = max_tokens
                 self.metadata = metadata
                 self.stop_sequences = stop_sequences
@@ -59,6 +46,19 @@ extension Anthropic {
                 self.top_k = top_k
                 self.top_p = top_p
             }
+            
+            public var messages: [Message]
+            public var model: String
+            public var max_tokens: Int
+            public var metadata: [String: String]?
+            public var stop_sequences: [String]?
+            public var stream: Bool?
+            public var system: String?
+            public var temperature: Double?
+            public var tool_choice: ToolChoice?
+            public var tools: [Tool]?
+            public var top_k: Int?
+            public var top_p: Double?
             
             public struct ContentBlock: Codable, Sendable {
                 public var type: String

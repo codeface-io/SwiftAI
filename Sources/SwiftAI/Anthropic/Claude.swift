@@ -1,23 +1,24 @@
-public extension ChatAI {
-    static func claude_3_5_Sonnet(key: AuthenticationKey) -> ChatAI {
-        .init(chatCompletionType: Anthropic.Claude_3_5_Sonnet.self, key: key)
-    }
-}
-
 public extension Anthropic {
-    enum Claude_3_5_Sonnet: ChatCompletionInterface {
-        public static func complete(chat: [SwiftAI.Message],
-                                    key: AuthenticationKey) async throws -> SwiftAI.Message {
+    struct Claude: ChatAI {
+        public init(_ model: Model, key: AuthenticationKey) {
+            self.model = model
+            self.key = key
+        }
+        
+        public func complete(chat: [SwiftAI.Message]) async throws -> SwiftAI.Message {
             try await Messages.complete(chat: chat,
-                                        usingModel: "claude-3-5-sonnet-latest",
+                                        using: model,
                                         key: key)
         }
+        
+        public let model: Model
+        let key: AuthenticationKey
     }
 }
 
 public extension Anthropic.Messages {
     static func complete(chat: [SwiftAI.Message],
-                         usingModel model: String,
+                         using model: Anthropic.Model,
                          key: AuthenticationKey) async throws -> SwiftAI.Message {
         // prepare Anthropic messages to be sent
         let anthropicMessages = chat.map {
@@ -36,7 +37,7 @@ public extension Anthropic.Messages {
         
         // get Anthropic response content
         guard let anthropicResponseText = response.content.first?.text else {
-            throw ChatCompletionError.responseLacksData
+            throw SwiftAIError.responseLacksData
         }
         
         // turn Anthropic response into regular message

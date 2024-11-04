@@ -19,7 +19,7 @@ extension XAI {
         public struct Request: Encodable, Sendable {
             public init(
                 _ messages: [Message],
-                model: String = "grok-beta",
+                model: Model,
                 frequency_penalty: Double? = nil,
                 logit_bias: [String : Int]? = nil,
                 logprobs: Bool? = nil,
@@ -35,7 +35,7 @@ extension XAI {
                 user: String? = nil
             ) {
                 self.messages = messages
-                self.model = model
+                self.model = model.value
                 self.frequency_penalty = frequency_penalty
                 self.logit_bias = logit_bias
                 self.logprobs = logprobs

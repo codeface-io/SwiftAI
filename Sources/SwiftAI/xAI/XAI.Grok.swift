@@ -1,24 +1,25 @@
-public extension ChatAI {
-    static func grokBeta(key: AuthenticationKey) -> ChatAI {
-        .init(chatCompletionType: XAI.GrokBeta.self, key: key)
-    }
-}
-
 public extension XAI {
-    enum GrokBeta: ChatCompletionInterface {
-        public static func complete(chat: [SwiftAI.Message],
-                                    key: AuthenticationKey) async throws -> SwiftAI.Message {
+    struct Grok: ChatAI {
+        public init(_ model: Model, key: AuthenticationKey) {
+            self.model = model
+            self.key = key
+        }
+        
+        public func complete(chat: [SwiftAI.Message]) async throws -> SwiftAI.Message {
             try await ChatCompletions.complete(chat: chat,
-                                               usingModel: "grok-beta",
+                                               using: model,
                                                key: key)
         }
+        
+        public let model: Model
+        let key: AuthenticationKey
     }
 }
 
 public extension XAI.ChatCompletions {
-    static func complete(chat: [SwiftAI.Message],
-                         usingModel model: String,
-                         key: AuthenticationKey) async throws -> SwiftAI.Message {
+    static func complete(chat: [Message],
+                         using model: XAI.Model,
+                         key: AuthenticationKey) async throws -> Message {
         // prepare xAI messages to be sent
         let xAIMessages = chat.map { XAI.Message($0) }
         
@@ -28,7 +29,7 @@ public extension XAI.ChatCompletions {
         
         // get xAI response message
         guard let xAIResponseMessage = response.choices.first?.message else {
-            throw ChatCompletionError.responseLacksData
+            throw SwiftAIError.responseLacksData
         }
         
         // turn xAI response message into regular message

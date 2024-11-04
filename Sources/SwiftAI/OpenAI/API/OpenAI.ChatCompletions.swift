@@ -18,7 +18,7 @@ extension OpenAI {
         public struct Request: Codable, Sendable {
             public init(
                 _ messages: [Message],
-                model: String = "gpt-4o",
+                model: Model,
                 store: Bool? = nil,
                 metadata: [String: String]? = nil,
                 frequency_penalty: Double? = nil,
@@ -43,7 +43,7 @@ extension OpenAI {
                 user: String? = nil
             ) {
                 self.messages = messages
-                self.model = model
+                self.model = model.value
                 self.store = store
                 self.metadata = metadata
                 self.frequency_penalty = frequency_penalty
