@@ -1,6 +1,7 @@
 import SwiftAI
 import FoundationToolz
 
+@available(macOS 10.15, iOS 13.0, *)
 @main
 struct ExampleApp {
     static func main() async {
@@ -12,6 +13,7 @@ struct ExampleApp {
     }
 }
 
+@available(macOS 10.15, iOS 13.0, *)
 func demonstrate() async throws {
     let prompt = "What is the meaning of life? Be concise and to the point :)"
     

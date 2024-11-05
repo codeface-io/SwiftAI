@@ -3,6 +3,7 @@ import SwiftyToolz
 
 extension OpenAI {
     public enum ChatCompletions {
+        @available(macOS 10.15, iOS 13.0, *)
         public static func post(
             _ request: Request,
             key: AuthenticationKey

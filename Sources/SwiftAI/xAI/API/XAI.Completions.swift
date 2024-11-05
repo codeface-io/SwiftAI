@@ -3,6 +3,7 @@ import SwiftyToolz
 
 extension XAI {
     public enum Completions {
+        @available(macOS 10.15, iOS 13.0, *)
         public static func post(
             _ request: Request,
             authenticationKey: AuthenticationKey
