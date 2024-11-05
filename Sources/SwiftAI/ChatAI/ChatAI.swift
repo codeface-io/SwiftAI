@@ -9,7 +9,3 @@
 public protocol ChatAI {
     func complete(chat: [Message]) async throws -> Message
 }
-
-enum SwiftAIError: Error {
-    case responseLacksData
-}
