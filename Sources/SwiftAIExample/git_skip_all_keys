@@ -1,0 +1,8 @@
+#!/bin/zsh
+cd "${0:a:h}"
+echo "Running in: $(pwd)"
+git ls-files "API Keys" | while IFS= read -r file; do
+    echo "Processing: $file"
+    git update-index --skip-worktree "$file"
+done
+echo "Done updating index"
