@@ -21,7 +21,7 @@ public extension Anthropic.Messages {
     @available(macOS 10.15, iOS 13.0, *)
     static func complete(chat: [SwiftAI.Message],
                          using model: Anthropic.Model,
-                         key: AuthenticationKey) async throws -> SwiftAI.Message {
+                         key: Anthropic.AuthenticationKey) async throws -> SwiftAI.Message {
         // prepare Anthropic messages to be sent
         let anthropicMessages = chat.map {
             let anthropicRole: Anthropic.Role = switch $0.role {

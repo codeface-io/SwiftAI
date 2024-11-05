@@ -21,7 +21,7 @@ extension OpenAI.ChatCompletions {
     @available(macOS 10.15, iOS 13.0, *)
     static func complete(chat: [SwiftAI.Message],
                          using model: OpenAI.Model,
-                         key: AuthenticationKey) async throws -> SwiftAI.Message {
+                         key: OpenAI.AuthenticationKey) async throws -> SwiftAI.Message {
         // prepare OpenAI messages to be sent
         let openAIMessages = chat.map {
             let openAIRole: OpenAI.Message.Role = switch $0.role {

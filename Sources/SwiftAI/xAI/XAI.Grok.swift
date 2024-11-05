@@ -21,7 +21,7 @@ public extension XAI.ChatCompletions {
     @available(macOS 10.15, iOS 13.0, *)
     static func complete(chat: [Message],
                          using model: XAI.Model,
-                         key: AuthenticationKey) async throws -> Message {
+                         key: XAI.AuthenticationKey) async throws -> Message {
         // prepare xAI messages to be sent
         let xAIMessages = chat.map { XAI.Message($0) }
         
