@@ -1,5 +1,5 @@
 public extension OpenAI {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     struct ChatGPT: ChatAI {
         public init(_ model: Model, key: AuthenticationKey) {
             self.model = model
@@ -18,7 +18,7 @@ public extension OpenAI {
 }
 
 extension OpenAI.ChatCompletions {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     static func complete(chat: [SwiftAI.Message],
                          using model: OpenAI.Model,
                          key: OpenAI.AuthenticationKey) async throws -> SwiftAI.Message {

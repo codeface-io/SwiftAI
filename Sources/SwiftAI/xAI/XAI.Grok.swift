@@ -1,5 +1,5 @@
 public extension XAI {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     struct Grok: ChatAI {
         public init(_ model: Model, key: AuthenticationKey) {
             self.model = model
@@ -18,7 +18,7 @@ public extension XAI {
 }
 
 public extension XAI.ChatCompletions {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     static func complete(chat: [Message],
                          using model: XAI.Model,
                          key: XAI.AuthenticationKey) async throws -> Message {

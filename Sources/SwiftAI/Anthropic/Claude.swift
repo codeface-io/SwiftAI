@@ -1,5 +1,5 @@
 public extension Anthropic {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     struct Claude: ChatAI {
         public init(_ model: Model, key: AuthenticationKey) {
             self.model = model
@@ -18,7 +18,7 @@ public extension Anthropic {
 }
 
 public extension Anthropic.Messages {
-    @available(macOS 10.15, iOS 13.0, *)
+    @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     static func complete(chat: [SwiftAI.Message],
                          using model: Anthropic.Model,
                          key: Anthropic.AuthenticationKey) async throws -> SwiftAI.Message {
