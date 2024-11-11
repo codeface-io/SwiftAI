@@ -29,4 +29,7 @@ LLM providers offering web APIs, sorted by their estimated maximum performance i
 **Notes:**
 
 - This list is based on interpretations of performance from various sources, including general benchmarks, research papers, and developer feedback. The exact ranking might vary as new models get released or as existing models are updated.
-- Open-source models like Falcon and Llama-3 could be accessed by hosting them on [Huggin Face](https://huggingface.co), or by using providers who already host them
+- Open-source models like Falcon and Llama-3 and custom models could be accessed by
+  - hosting them on [Huggin Face](https://huggingface.co)
+  - hosting them on [Replicate](https://replicate.com)
+  - using providers who already host them
