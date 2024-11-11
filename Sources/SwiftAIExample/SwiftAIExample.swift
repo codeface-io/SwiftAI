@@ -15,12 +15,12 @@ struct ExampleApp {
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 func demonstrate() async throws {
-    let prompt = "What is the meaning of life? Be concise and to the point :)"
+    let prompt = "What is the meaning of life? Be concise and to the point."
     
     let chatAIs: [ChatAI] = [
-        XAI.Grok(.grokBeta, key: .xAI),
-        Anthropic.Claude(.claude_3_5_Sonnet, key: .anthropic),
-        OpenAI.ChatGPT(.gpt_4o, key: .openAI)
+        XAI.Grok(.grokBeta, key: .myKey),
+        Anthropic.Claude(.claude_3_5_Sonnet, key: .myKey),
+        OpenAI.ChatGPT(.gpt_4o, key: .myKey)
     ]
     
     for chatAI in chatAIs {

@@ -1,7 +1,7 @@
 import SwiftAI
 
 extension OpenAI.AuthenticationKey {
-    static let openAI = OpenAI.AuthenticationKey(
+    static let myKey = OpenAI.AuthenticationKey(
         "Insert an OpenAI API key here"
     )
 }
