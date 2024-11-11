@@ -1,6 +1,6 @@
 # SwiftAI
 
-🛸 Future: AI agents as declarative Swift.
+🛸 Future: AI agents as declarative Swift?
 
 ✨ Now: Easy use of Grok, Claude and ChatGPT:
 
@@ -8,12 +8,12 @@
 import SwiftAI
 
 func demonstrate() async throws {
-    let prompt = "What is the meaning of life? Be concise and to the point :)"
+    let prompt = "What is the meaning of life? Be concise and to the point."
     
     let chatAIs: [ChatAI] = [
-        XAI.Grok(.grokBeta, key: .xAI),
-        Anthropic.Claude(.claude_3_5_Sonnet, key: .anthropic),
-        OpenAI.ChatGPT(.gpt_4o, key: .openAI)
+        XAI.Grok(.grokBeta, key: .myKey),
+        Anthropic.Claude(.claude_3_5_Sonnet, key: .myKey),
+        OpenAI.ChatGPT(.gpt_4o, key: .myKey)
     ]
     
     for chatAI in chatAIs {
