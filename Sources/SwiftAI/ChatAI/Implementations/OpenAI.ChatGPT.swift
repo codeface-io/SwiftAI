@@ -6,8 +6,10 @@ public extension OpenAI {
             self.key = key
         }
         
-        public func complete(chat: [SwiftAI.Message]) async throws -> SwiftAI.Message {
+        public func complete(chat: [SwiftAI.Message],
+                             systemPrompt: String?) async throws -> SwiftAI.Message {
             try await ChatCompletions.complete(chat: chat,
+                                               systemPrompt: systemPrompt,
                                                using: model,
                                                key: key)
         }
@@ -20,10 +22,11 @@ public extension OpenAI {
 extension OpenAI.ChatCompletions {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     static func complete(chat: [SwiftAI.Message],
+                         systemPrompt: String?,
                          using model: OpenAI.Model,
                          key: OpenAI.AuthenticationKey) async throws -> SwiftAI.Message {
         // prepare OpenAI messages to be sent
-        let openAIMessages = chat.map {
+        var openAIMessages = chat.map {
             let openAIRole: OpenAI.Message.Role = switch $0.role {
             case .assistant: .assistant
             case .user: .user
@@ -31,6 +34,10 @@ extension OpenAI.ChatCompletions {
             }
             
             return OpenAI.Message($0.content, role: openAIRole)
+        }
+        
+        if let systemPrompt {
+            openAIMessages.insert(.init(systemPrompt, role: .system), at: 0)
         }
 
         // send and get response

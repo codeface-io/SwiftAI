@@ -6,8 +6,10 @@ public extension XAI {
             self.key = key
         }
         
-        public func complete(chat: [SwiftAI.Message]) async throws -> SwiftAI.Message {
+        public func complete(chat: [SwiftAI.Message],
+                             systemPrompt: String?) async throws -> SwiftAI.Message {
             try await ChatCompletions.complete(chat: chat,
+                                               systemPrompt: systemPrompt,
                                                using: model,
                                                key: key)
         }
@@ -20,10 +22,15 @@ public extension XAI {
 public extension XAI.ChatCompletions {
     @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
     static func complete(chat: [Message],
+                         systemPrompt: String?,
                          using model: XAI.Model,
                          key: XAI.AuthenticationKey) async throws -> Message {
         // prepare xAI messages to be sent
-        let xAIMessages = chat.map { XAI.Message($0) }
+        var xAIMessages = chat.map { XAI.Message($0) }
+        
+        if let systemPrompt {
+            xAIMessages.insert(.init(systemPrompt, role: .system), at: 0)
+        }
         
         // send and get response
         let response = try await post(.init(xAIMessages, model: model),
