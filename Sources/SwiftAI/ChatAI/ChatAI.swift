@@ -1,4 +1,4 @@
-extension ChatAI {
+public extension ChatAI {
     func complete(chat: [Message]) async throws -> Message {
         try await complete(chat: chat, systemPrompt: nil)
     }
