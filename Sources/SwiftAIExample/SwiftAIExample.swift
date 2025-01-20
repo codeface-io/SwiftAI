@@ -24,7 +24,7 @@ func demonstrate() async throws {
     ]
     
     for chatAI in chatAIs {
-        let answer = try await chatAI.complete(chat: [Message(prompt)], systemPrompt: nil)
+        let answer = try await chatAI.complete(chat: [Message(prompt)])
         print(answer.content)
     }
 }
