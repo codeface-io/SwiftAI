@@ -9,5 +9,10 @@ public struct Message: Equatable, Identifiable, Sendable, Codable {
         self.content = content
         self.role = role
     }
+    
+    private enum CodingKeys: String, CodingKey {
+        case content, role
+    }
+    
     public enum Role: Sendable, Codable { case user, assistant, system }
 }
