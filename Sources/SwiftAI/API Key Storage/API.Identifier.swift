@@ -5,7 +5,7 @@ public extension API.Key {
 }
 
 public extension API {
-    public enum Identifier: String, CaseIterable, Identifiable {
+    enum Identifier: String, CaseIterable, Identifiable {
         public var displayName: String {
             switch self {
             case .anthropic: "Anthropic"
